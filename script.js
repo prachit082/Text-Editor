@@ -1,14 +1,67 @@
+/**
+ * Represents a collection of option buttons.
+ * @type {NodeList}
+ */
 let optionsButtons = document.querySelectorAll(".option-button");
+
+/**
+ * Represents a collection of advanced option buttons.
+ * @type {NodeList}
+ */
 let advancedOptionButton = document.querySelectorAll(".adv-option-button");
+
+/**
+ * The font name element.
+ * @type {HTMLElement}
+ */
 let fontName = document.getElementById("fontName");
+
+/**
+ * Reference to the font size element.
+ * @type {HTMLElement}
+ */
 let fontSizeRef = document.getElementById("fontSize");
+
+/**
+ * Reference to the text input element.
+ * @type {HTMLElement}
+ */
 let writingArea = document.getElementById("text-input");
+
+/**
+ * Reference to the create link button.
+ * @type {HTMLElement}
+ */
 let linkButton = document.getElementById("createLink");
+
+/**
+ * Represents a collection of alignment buttons.
+ * @type {NodeList}
+ */
 let alignButtons = document.querySelectorAll(".align");
+
+/**
+ * Represents a collection of spacing buttons.
+ * @type {NodeList}
+ */
 let spacingButtons = document.querySelectorAll(".spacing");
+
+/**
+ * Represents a collection of format buttons.
+ * @type {NodeList}
+ */
 let formatButtons = document.querySelectorAll(".format");
+
+/**
+ * Represents a collection of script buttons.
+ * @type {NodeList}
+ */
 let scriptButtons = document.querySelectorAll(".script");
 
+/**
+ * List of fonts available for selection.
+ * @type {string[]}
+ */
 let fontList = [
     "Arial",
     "Verdana",
@@ -19,6 +72,9 @@ let fontList = [
     "Cursive",
 ];
 
+/**
+ * Initializes the text editor by setting up the initial state and options.
+ */
 const intializer = () => {
     highlighter(alignButtons, true);
     highlighter(spacingButtons, true);
@@ -42,6 +98,13 @@ const intializer = () => {
     fontSizeRef.value = 3;
 };
 
+/**
+ * Modifies the text in the document using the specified command.
+ *
+ * @param {string} command - The command to execute.
+ * @param {boolean} defaultUi - Whether or not to use the default user interface for the command.
+ * @param {string} value - The value to pass to the command.
+ */
 const modifyText = (command, defaultUi, value) => {
     document.execCommand(command, defaultUi, value);
 };
@@ -68,6 +131,12 @@ linkButton.addEventListener("click", () => {
     }
 });
 
+/**
+ * Adds or removes the "active" class to the specified buttons based on the needsRemoval parameter.
+ *
+ * @param {NodeList} className - The collection of buttons to apply the highlighter to.
+ * @param {boolean} needsRemoval - Whether or not to remove the "active" class from buttons.
+ */
 const highlighter = (className, needsRemoval) => {
     className.forEach((button) => {
         button.addEventListener("click", () => {
@@ -87,6 +156,10 @@ const highlighter = (className, needsRemoval) => {
     });
 };
 
+/**
+ * Removes the "active" class from the specified buttons.
+ * @param {NodeList} className - The collection of buttons to remove the "active" class from.
+ */
 const highlighterRemover = (className) => {
     className.forEach((button) => {
         button.classList.remove("active");
